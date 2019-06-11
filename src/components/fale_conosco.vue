@@ -20,13 +20,13 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="md-form mb-0">
-                  <input type="text" id="name" name="name" class="form-control">
+                  <input v-model="nome" type="text" id="name" name="name" class="form-control">
                   <label for="name" class>Nome Completo</label>
                 </div>
               </div>
               <div class="col-md-6">
                 <div class="md-form mb-0">
-                  <input type="text" id="email" name="email" class="form-control">
+                  <input v-model="email" type="text" id="email" name="email" class="form-control">
                   <label for="email" class>e-mail para contato</label>
                 </div>
               </div>
@@ -34,7 +34,7 @@
             <div class="row">
               <div class="col-md-12">
                 <div class="md-form mb-0">
-                  <input type="text" id="subject" name="subject" class="form-control">
+                  <input v-model="subject" type="text" id="subject" name="subject" class="form-control">
                   <label for="subject" class>Título</label>
                 </div>
               </div>
@@ -43,6 +43,7 @@
               <div class="col-md-12">
                 <div class="md-form">
                   <textarea
+                  v-model="message"
                     type="text"
                     id="message"
                     name="message"
@@ -67,17 +68,16 @@
 <script>
 export default {
   data: () => ({
-    nome: "",
-    email: "",
-    subject: "",
-    message: "",
+    nome: '',
+    email: '',
+    subject: '',
+    message: '',
     mostraErro: false
   }),
   methods: {
-    validaForm() {
-      const { nome, email, subject, message } = this;
-      this.mostraErro = !nome && !email && !subject && !message;
+    validaForm () {
+      this.mostraErro = !this.nome || !this.email || !this.subject || !this.message
     }
   }
-};
+}
 </script>
